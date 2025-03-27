@@ -1,0 +1,49 @@
+.homeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-image: url('../images/medico.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.homeContent {
+    max-width: 80%;
+    text-align: center;
+}
+
+.homeTitle {
+    font-size: 5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 3px rgb(255, 255, 255);
+}
+
+.homeDescription {
+    font-size: 2rem;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+    backdrop-filter: blur(30px);
+    border-radius: 8px;
+}
+
+.homeBtn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.homeBtn:hover {
+    background-color: #2980b9;
+}
+
+

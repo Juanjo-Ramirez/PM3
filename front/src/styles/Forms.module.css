@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  margin: 15px;
+}
+
+.formContainerSetAppointment {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  width: 300px;
+  margin: 15px;
+}
+
+.formContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.formContainerSetAppointment {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.formTitle {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+.formHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formSubtitle {
+  font-size: 1.5rem;
+  color: #4a4a4a;
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.inputGroup label {
+  font-size: 1rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.inputField {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.inputField:focus {
+  border-color: #3498db;
+}
+
+.errorMessage {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.submitBtn {
+  display: block;
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submitAppointmentBtn {
+  display: flex;
+  width: 12rem;
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  justify-content: center;
+}
+
+.submitBtn:hover {
+  background-color: #2980b9;
+}

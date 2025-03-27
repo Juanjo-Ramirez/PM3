@@ -1,0 +1,28 @@
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #f3f6fa;
+}
+
+.loginContent {
+    width: 100%;
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.loginTitle {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.loginDescription {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
