@@ -14,7 +14,7 @@ export const AppointmentProvider = ({ children }) => {
         if (!isAuthenticated) {
             return;
         }
-        axios.get(`http://localhost:3000/users/${userId}`)
+        axios.get(`https://pm3-turnos.onrender.com/users/${userId}`)
             .then((response) => {
                 setAppointments(response.data.appointments);
             })
@@ -25,7 +25,7 @@ export const AppointmentProvider = ({ children }) => {
 
     const createAppointment = async (newAppointmentData) => {
         try {
-            const response = await axios.post(`http://localhost:3000/appointments/schedule`, {
+            const response = await axios.post(`https://pm3-turnos.onrender.com/appointments/schedule`, {
                 ...newAppointmentData,
                 userId: userId
             });

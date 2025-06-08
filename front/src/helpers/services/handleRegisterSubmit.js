@@ -2,7 +2,7 @@ import axios from "axios";
 
 const handleRegisterSubmit = async (values) => {
     try {
-        const response = await axios.post("http://localhost:3000/users/register", {
+        const response = await axios.post("https://pm3-turnos.onrender.com/users/register", {
             username: values.username,
             email: values.email,
             password: values.password,

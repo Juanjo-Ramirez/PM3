@@ -10,7 +10,7 @@ const Turno = ({ id, date, time, status, appointmentReason}) => {
     
     const handleCancel = () => {
         try {
-            axios.put(`http://localhost:3000/appointments/cancel/${ id }`);
+            axios.put(`https://pm3-turnos.onrender.com/appointments/cancel/${ id }`);
             setAppointments((prev) =>
                 prev.map((turno) => turno.id === id ? { ...turno, status: "cancelled" } : turno
                 )
