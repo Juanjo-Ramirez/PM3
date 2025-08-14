@@ -20,7 +20,6 @@ const RegisterForm = () => {
                 onSubmit={async (values, { setSubmitting, resetForm }) => {
                     console.log("Submitting form", values);
                     const response = await handleRegisterSubmit(values);
-                    console.log("Response from API", response);
 
                     if (response.status === 201) {
                         alert("Usuario registrado");

@@ -1,0 +1,30 @@
+{
+  "name": "pm3-monorepo",
+  "version": "1.0.0",
+  "description": "Sistema de Gestión de Turnos Médicos - Monorepo",
+  "scripts": {
+    "install-all": "cd back && npm install && cd ../front && npm install",
+    "build": "npm run install-all && cd front && npm run build && cd ../back && npm run build",
+    "start": "cd back && NODE_ENV=production npm start",
+    "dev:back": "cd back && npm run dev",
+    "dev:front": "cd front && npm run dev",
+    "dev": "concurrently \"npm run dev:back\" \"npm run dev:front\"",
+    "render-build": "npm run install-all && cd front && npm run build && cd ../back && npm run build",
+    "render-start": "cd back && NODE_ENV=production npm start"
+  },
+  "keywords": [
+    "monorepo",
+    "typescript",
+    "react",
+    "express",
+    "medical"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

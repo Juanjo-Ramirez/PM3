@@ -1,1 +1,0 @@
-import IAppointment from '../interfaces/IAppointment';

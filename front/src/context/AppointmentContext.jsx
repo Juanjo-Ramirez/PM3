@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from "axios";
+import apiClient from "../helpers/apiClient.js";
 import { useContext } from "react";
 import AuthContext from "./AuthContext";
 
@@ -14,18 +14,18 @@ export const AppointmentProvider = ({ children }) => {
         if (!isAuthenticated) {
             return;
         }
-        axios.get(`https://pm3-turnos.onrender.com/users/${userId}`)
+        apiClient.get(`/users/${userId}`)
             .then((response) => {
                 setAppointments(response.data.appointments);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, [ isAuthenticated, userId]);
+    }, [isAuthenticated, userId]);
 
     const createAppointment = async (newAppointmentData) => {
         try {
-            const response = await axios.post(`https://pm3-turnos.onrender.com/appointments/schedule`, {
+            const response = await apiClient.post(`/appointments/schedule`, {
                 ...newAppointmentData,
                 userId: userId
             });

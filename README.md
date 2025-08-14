@@ -87,26 +87,131 @@ La aplicación maneja tres entidades principales:
 
 ### Prerrequisitos
 
-- Node.js (v16 o superior)
+- Node.js (v18 o superior)
 - PostgreSQL
 - npm o yarn
 
-### Backend
+### Desarrollo Local
+
+#### Instalación de dependencias
 
 ```bash
-cd back
-npm install
-# Configurar variables de entorno en .env
-npm run build
-npm start
+npm run install-all
 ```
 
-### Frontend
+#### Configuración de variables de entorno
+
+**Backend (`/back/.env`):**
 
 ```bash
-cd front
-npm install
+PORT=3001
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_password
+DATABASE=tu_database_name
+```
+
+**Frontend (`/front/.env`):**
+
+```bash
+VITE_API_URL=http://localhost:3001
+```
+
+#### Ejecutar en desarrollo
+
+```bash
+# Ambos servicios simultáneamente
 npm run dev
+
+# O por separado:
+npm run dev:back    # Backend en puerto 3001
+npm run dev:front   # Frontend en puerto 5173 (Vite)
+```
+
+### Deployment en Render
+
+#### Opción 1: Monorepo (Frontend + Backend en un solo servicio) - RECOMENDADO
+
+**Configuración del Web Service en Render:**
+
+1. **Build Command:**
+
+```bash
+npm run render-build
+```
+
+2. **Start Command:**
+
+```bash
+npm run render-start
+```
+
+3. **Variables de entorno necesarias:**
+   - `NODE_ENV=production`
+   - `PORT=10000` (o el puerto que asigne Render)
+   - `DB_HOST`, `DB_PORT`, `DB_USERNAME`, `DB_PASSWORD`, `DATABASE`
+   - **NO necesitas VITE_API_URL** (usará `/api` automáticamente)
+
+**¿Cómo funciona?**
+
+- El build compila el frontend a archivos estáticos en `/front/dist`
+- El backend los sirve desde Express en producción
+- Las rutas API están en `/api/*` y el frontend en todas las demás rutas
+
+#### Opción 2: Deployment Separado
+
+**Backend (Web Service):**
+
+- Build Command: `cd back && npm install && npm run build`
+- Start Command: `cd back && npm start`
+- Variables de entorno: Las mismas del backend
+
+**Frontend (Static Site):**
+
+- Build Command: `cd front && npm install && npm run build`
+- Publish Directory: `front/dist`
+- Variable de entorno: `VITE_API_URL=https://tu-backend.onrender.com`
+
+#### Solución de Problemas Comunes
+
+1. **Error de CORS:** El backend ya está configurado con CORS habilitado
+2. **Error 404 en rutas:** El servidor maneja SPA routing automáticamente
+3. **Error de conexión API:** Verifica que las variables de entorno estén correctas
+4. **Puerto incorrecto:** El frontend usa automáticamente el puerto correcto según el entorno
+
+#### Opción 2: Deployment Separado (Recomendado para producción)
+
+**Backend (Web Service):**
+
+- Build Command: `cd back && npm install && npm run build`
+- Start Command: `cd back && npm start`
+
+**Frontend (Static Site):**
+
+- Build Command: `cd front && npm install && npm run build`
+- Publish Directory: `front/dist`
+- Variable de entorno: `VITE_API_URL=https://tu-backend.onrender.com/api`
+
+#### Configuración de URLs
+
+Para facilitar el deployment, se recomienda:
+
+1. **Crear archivo `.env` en `/front`:**
+
+```bash
+# Para desarrollo local
+VITE_API_URL=http://localhost:3000
+
+# Para producción separada
+# VITE_API_URL=https://tu-backend.onrender.com/api
+```
+
+2. **Actualizar imports en el frontend para usar la configuración:**
+
+```javascript
+import API_BASE_URL from "../config/api.js";
+// Usar API_BASE_URL en lugar de URLs hardcodeadas
 ```
 
 ## Estados de Turnos

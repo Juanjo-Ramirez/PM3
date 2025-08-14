@@ -2,7 +2,7 @@ import style from "../styles/Forms.module.css";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import apiClient from "../helpers/apiClient.js";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -13,7 +13,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://pm3-turnos.onrender.com/users/login", {
+      const response = await apiClient.post("/users/login", {
         username,
         password,
       });
@@ -24,7 +24,8 @@ const LoginForm = () => {
         alert("Credenciales incorrectas");
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      alert("Error al iniciar sesión. Verifique sus credenciales.");
     }
   };
 

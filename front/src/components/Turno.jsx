@@ -1,16 +1,16 @@
-import axios from "axios";
+import apiClient from "../helpers/apiClient.js";
 import PropTypes from 'prop-types';
 import { useContext } from "react";
 import AppointmentContext from "../context/AppointmentContext.jsx";
 import style from "../styles/Pages.module.css";
 
 
-const Turno = ({ id, date, time, status, appointmentReason}) => {
+const Turno = ({ id, date, time, status, appointmentReason }) => {
     const { setAppointments } = useContext(AppointmentContext);
-    
-    const handleCancel = () => {
+
+    const handleCancel = async () => {
         try {
-            axios.put(`https://pm3-turnos.onrender.com/appointments/cancel/${ id }`);
+            await apiClient.put(`/appointments/cancel/${id}`);
             setAppointments((prev) =>
                 prev.map((turno) => turno.id === id ? { ...turno, status: "cancelled" } : turno
                 )
@@ -21,7 +21,7 @@ const Turno = ({ id, date, time, status, appointmentReason}) => {
             alert("Error al cancelar el turno");
         }
     }
-    
+
     return (
         <div className={style.turno}>
             <h2>{appointmentReason}</h2>
@@ -40,4 +40,5 @@ Turno.propTypes = {
     date: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
     appointmentReason: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired}
+    status: PropTypes.string.isRequired
+}
